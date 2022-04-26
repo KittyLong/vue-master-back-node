@@ -1,4 +1,8 @@
-# 用 node 简单写一个后台 vue-master-back-node
+# 用 node 简单写一个后台 vue-master-back-
+
+1.service controller调用方法得实现只做简单增删改查
+2.controller 处理所有请求并做一些校验工作比如登陆
+3.router 请求路由得接收并调用controller
 
 # 遇到的问题
 
