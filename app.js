@@ -1,22 +1,15 @@
-import express from "express";
-import history from "connect-history-api-fallback";
+import Koa from "koa";
 import path from "path";
-import { select } from "./src/utils/mysql.js";
-const app = express();
+import router from "./src/routes/index.js";
+// //bodyParser中间件
+// import koaBodyparser from "koa-bodyparser";
+const app = new Koa();
 
-// 解析表单数据
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
-app.use(history({
-  verbose: true,
-  index:'/'
-}));
-
+app.use(router.routes()).use(router.allowedMethods());
+// app.use(koaBodyparser());
+// app.on("error", (err, ctx) => {
+//   console.error("server error111", err, ctx);
+// });
 app.listen(8088, () => {
   console.log("服务器启动！");
 });
-
-select('sys_user').then(res => {
-  console.log(res)
-})
