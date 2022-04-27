@@ -11,3 +11,6 @@ mysql 密码校验机制问题
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 或者
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+
+2.ctx.request.body获取不到值
+koa-bodyparser中间件要放在路由前面

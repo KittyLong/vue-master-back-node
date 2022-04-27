@@ -13,9 +13,8 @@ const router = new Router();
 router
   .get("/system/dict/data", dict.getDict)
   .post("/system/dict/update", dict.updateDict)
-  .delete("/system/dict/", dict.deleteDict)
-  .put("/system/dict/add", dict.addDict);
-
+  .delete("/system/dict/delete", dict.deleteDict)
+  .put("/system/dict/add", dict.addDict)
 // 用户
 router
   .get("/system/user/data/:user_id", user.getUser)
