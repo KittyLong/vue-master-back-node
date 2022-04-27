@@ -1,15 +1,14 @@
-import { insert, select, update } from "../methods/mysql.js";
-const table = "user";
+import { insert, selectWhere,select } from "../db/mysql.js";
+const table = "sys_user";
 
-function insertInfo(params, values, callback) {
-  insert(table, params, values, function (rows) {
-    callback(rows);
-  });
+function insertUser(data) {
+  return insert(table, data)
 }
-function selectInfo(params = [], values = [], callback) {
-  select(table, params, values, function (rows) {
-    callback(rows);
-  });
+function selectUserWhere(where) {
+  return selectWhere(table,where)
 }
-
-export { insertInfo, selectInfo };
+// 查询所有
+function selectUsers() {
+  return select(table)
+}
+export { selectUsers, selectUserWhere,insertUser };

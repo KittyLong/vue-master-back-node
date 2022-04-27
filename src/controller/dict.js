@@ -7,17 +7,17 @@ class DictController {
     //   b: 2,
     // };
   }
-  // static async updateDict(ctx) {
-  //   console.log(222);
-  //   console.log("updatedict");
-  //   console.log(ctx.request.body);
-  //   ctx.body = {
-  //     m:2
-  //   };
-  // }
-  // static async deleteDict(ctx) {}
+  static async updateDict(ctx) {
+    console.log(222);
+    console.log("updatedict");
+    console.log(ctx.request.body);
+    ctx.body = {
+      m:2
+    };
+  }
+  static async deleteDict(ctx) {}
   
-  // static async addDict(ctx) {}
+  static async addDict(ctx) {}
 }
 
 export default DictController;

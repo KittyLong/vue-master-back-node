@@ -3,7 +3,7 @@ import dict from "../controller/dict.js";
 import menu from "../controller/menu.js";
 import role from "../controller/role.js";
 import user from "../controller/user.js";
-import common from "../controller/common.js";
+// import common from "../controller/common.js";
 //   router = new Router({
 //       prefix: '/api'
 //   }),
@@ -17,7 +17,7 @@ router
   .put("/system/dict/add", dict.addDict)
 // 用户
 router
-  .get("/system/user/data/:user_id", user.getUser)
+  .get("/system/user/data", user.getUser)
   .post("/system/user/update", user.updateUser)
   .delete("/system/user/delete", user.deleteUser)
   .put("/system/user/add", user.addUser);

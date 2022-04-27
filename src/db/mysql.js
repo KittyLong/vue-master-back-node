@@ -32,3 +32,16 @@ export function insertWhere(table, where, data) {
 export function insertAll(table, arr) {
   return mysql.table(table).addAll(data);
 }
+// 条件更新
+export function update(table, where,data) {
+  return mysql.table(table).where(where).update(data)
+}
+// 分页查询
+export function page(table, page=1, count=20) {
+  return mysql.table(table).page(page,count).select()
+}
+// 组合查询(默认左连接)
+export function join(table, where) {
+  return mysqltable(table).join(where).select()
+}
+// 暂时这么几个就够用了 删除只是修改del_flag就不写了
