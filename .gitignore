@@ -1,2 +1,2 @@
 node_modules/
-src/utils/mysql.js
+src/db/mysql.js
