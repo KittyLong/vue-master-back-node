@@ -9,6 +9,7 @@ var mysql = Mysql.createConnection({
   database: "masterdb",
 });
 
+// 所有增删改按理需要事务处理
 // 单表查询所有
 export function select(table) {
   return mysql.table(table).select();
@@ -17,7 +18,7 @@ export function select(table) {
 export function selectWhere(table, where) {
   return mysql.table(table).where(where).select();
 }
-// 单条数据插入
+// 单条数据插入,感觉多余了
 export function insert(table, data) {
   return mysql.table(table).add(data);
 }
@@ -29,19 +30,19 @@ export function insertWhere(table, where, data) {
   return mysql.table(table).thenAdd(data, where, true);
 }
 // 多条数据插入
-export function insertAll(table, arr) {
+export function insertAll(table, data) {
   return mysql.table(table).addAll(data);
 }
 // 条件更新
-export function update(table, where,data) {
-  return mysql.table(table).where(where).update(data)
+export function update(table, where, data) {
+  return mysql.table(table).where(where).update(data);
 }
 // 分页查询
-export function page(table, page=1, count=20) {
-  return mysql.table(table).page(page,count).select()
+export function page(table, page = 1, count = 20) {
+  return mysql.table(table).page(page, count).select();
 }
 // 组合查询(默认左连接)
 export function join(table, where) {
-  return mysqltable(table).join(where).select()
+  return mysql.table(table).join(where).select();
 }
 // 暂时这么几个就够用了 删除只是修改del_flag就不写了
