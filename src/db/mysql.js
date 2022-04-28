@@ -3,9 +3,9 @@
 // 具体使用可以直接github上文档
 import Mysql from "node-mysql-promise";
 var mysql = Mysql.createConnection({
-  host: "101.43.9.13",
+  host: "127.0.0.1",
   user: "root",
-  password: "12311560",
+  password: "123456",
   database: "masterdb",
 });
 
