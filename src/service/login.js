@@ -10,9 +10,7 @@ class LoginService {
       on: ["id", "id"],
     });
   }
-  static async logOut() {
-    //   消除token移除一些信息
-  }
+  static async logOut() {}
 }
 
 export default MenuService;

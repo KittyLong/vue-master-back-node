@@ -3,6 +3,7 @@ import dict from "../controller/dict.js";
 import menu from "../controller/menu.js";
 import role from "../controller/role.js";
 import user from "../controller/user.js";
+import login from "../controller/login.js";
 // import common from "../controller/common.js";
 //   router = new Router({
 //       prefix: '/api'
@@ -14,7 +15,7 @@ router
   .get("/system/dict/data", dict.getDict)
   .post("/system/dict/update", dict.updateDict)
   .delete("/system/dict/delete", dict.deleteDict)
-  .put("/system/dict/add", dict.addDict)
+  .put("/system/dict/add", dict.addDict);
 // 用户
 router
   .get("/system/user/data", user.getUser)
@@ -24,16 +25,18 @@ router
 
 // 角色
 router
-  .get("/system/role/data/:role_id", role.getRole)
+  .get("/system/role/data", role.getRole)
   .post("/system/role/update", role.updateRole)
   .delete("/system/role/delete", role.deleteRole)
   .put("/system/role/add", role.addRole);
 
 // 菜单
 router
-  .get("/system/menu/data/:role_id", menu.getMenu)
+  .get("/system/menu/data", menu.getMenu)
   .post("/system/menu/update", menu.updateMenu)
   .delete("/system/menu/delete", menu.deleteMenu)
   .put("/system/menu/add", menu.addMenu);
 
+// 登录
+router.post("/system/login", login.login);
 export default router;
