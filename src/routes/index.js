@@ -13,9 +13,9 @@ const router = new Router();
 // 字典
 router
   .get("/system/dict/data", dict.getDict)
-  .post("/system/dict/update", dict.updateDict)
-  .delete("/system/dict/delete", dict.deleteDict)
-  .put("/system/dict/add", dict.addDict);
+  // .post("/system/dict/update", dict.updateDict)
+  // .delete("/system/dict/delete", dict.deleteDict)
+  // .put("/system/dict/add", dict.addDict);
 // 用户
 router
   .get("/system/user/data", user.getUser)

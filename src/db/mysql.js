@@ -3,9 +3,9 @@
 // 具体使用可以直接github上文档
 import Mysql from "node-mysql-promise";
 var mysql = Mysql.createConnection({
-  host: "127.0.0.1",
+  host: "101.43.9.13",
   user: "root",
-  password: "123456",
+  password: "12311560",
   database: "masterdb",
 });
 
@@ -42,7 +42,7 @@ export function page(table, page = 1, count = 20) {
   return mysql.table(table).page(page, count).select();
 }
 // 组合查询(默认左连接)
-export function join(table, where) {
-  return mysql.table(table).join(where).select();
+export function join(table,on, where) {
+  return mysql.table(table).join(on).where(where).select();
 }
 // 暂时这么几个就够用了 删除只是修改del_flag就不写了

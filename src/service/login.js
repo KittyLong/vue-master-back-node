@@ -3,14 +3,13 @@ import { join } from "../db/mysql.js";
 
 class LoginService {
   // 获取客户权限菜单
-  static async getUserMenu() {
+  static async getUserMenu(where) {
     return join("sys_user_role", {
-      table: sys_role_menu,
+      table: 'sys_role_menu',
       join: "inner",
-      on: ["id", "id"],
-    });
+      on: ["role_id", "role_id"],
+    },where);
   }
-  static async logOut() {}
 }
 
-export default MenuService;
+export default LoginService;

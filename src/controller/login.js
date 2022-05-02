@@ -1,13 +1,10 @@
-import login from "../service/login.js";
 import md5 from "md5";
+import LoginService from "../service/login.js";
+import login from "../service/login.js";
+import user from '../service/user.js'
+import createToken from '../utils/token.js'
 class LoginController {
   static async login(ctx) {
-    // console.log(ctx.request.query.a);
-    // console.log(1111);
-    // ctx.body = {
-    //   a: 1,
-    //   b: 2,
-    // };
     let data = ctx.request.body;
     const { user_id, password } = data;
     if (!user_id) {
@@ -18,20 +15,30 @@ class LoginController {
     }
     //校验密码
     try {
-      // let res = await
-    } catch (error) {}
+      let res = await user.selectUserWhere({ user_id })
+      if (res.length > 0) {
+        let userObj = res[0]
+        if (md5(data.password) === userObj.password) {
+          const token = createToken({user_id})
+          let menus = await LoginService.getUserMenu({user_id:data.user_id})
+          ctx.body={...userObj,msg:'登录成功',token, success:true,menus}
+        } else {
+          ctx.body = {
+            msg: '密码错误',
+            success:false
+          }
+        }
+        // 如果要做登录记录可以在此添加
+      } else {
+        ctx.body = {
+          msg: '该用户不存在',
+          success:false
+        }
+       }
+    } catch (error) {
+      ctx.body = error
+    }
   }
-  // static async updateDict(ctx) {
-  //   console.log(222);
-  //   console.log("updatedict");
-  //   console.log(ctx.request.body);
-  //   ctx.body = {
-  //     m:2
-  //   };
-  // }
-  // static async deleteDict(ctx) {}
-
-  // static async addDict(ctx) {}
 }
 
 export default LoginController;
