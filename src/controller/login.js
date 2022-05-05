@@ -29,6 +29,7 @@ class LoginController {
               "path",
               "vue_path",
               "parent_id",
+              "icon"
             ])
           );
           ctx.body = {
