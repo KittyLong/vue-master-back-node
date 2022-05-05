@@ -35,7 +35,8 @@ router
   .get("/system/menu/data", menu.getMenu)
   .post("/system/menu/update", menu.updateMenu)
   .delete("/system/menu/delete", menu.deleteMenu)
-  .put("/system/menu/add", menu.addMenu);
+  .put("/system/menu/add", menu.addMenu)
+  .post("/system/menu/getPermissionMenu",menu.getPermissionMenu)
 
 // 登录
 router.post("/system/login", login.login);

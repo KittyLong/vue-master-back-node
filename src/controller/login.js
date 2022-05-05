@@ -1,5 +1,5 @@
 import md5 from "md5";
-import login from "../service/login.js";
+// import login from "../service/login.js";
 import user from "../service/user.js";
 import createToken from "../utils/token.js";
 import _ from "lodash";
@@ -21,23 +21,12 @@ class LoginController {
         if (md5(data.password) === userObj.password) {
           userObj = _.omit(userObj, ["password"]);
           const token = createToken({ user_id: userObj.user_id });
-          let menus = await login.getUserMenu({ user_id: userObj.user_id });
-          menus = menus.map((item) =>
-            _.pick(item, [
-              "menu_id",
-              "menu_name",
-              "path",
-              "vue_path",
-              "parent_id",
-              "icon"
-            ])
-          );
+
           ctx.body = {
             ...userObj,
             msg: "登录成功",
             token,
             success: true,
-            menus,
           };
         } else {
           ctx.body = {

@@ -1,6 +1,24 @@
 import menu from "../service/menu.js";
 
 class MenuController {
+  static async getPermissionMenu(ctx) {
+    const { user_id } = ctx.request.body;
+    let menus = await login.getUserMenu({ user_id });
+    menus = menus.map((item) =>
+      _.pick(item, [
+        "menu_id",
+        "menu_name",
+        "path",
+        "vue_path",
+        "parent_id",
+        "icon"
+      ])
+    );
+    ctx.body = {
+      msg: 'ok',
+      menus
+    }
+  }
   static async getMenu(ctx) {
     let data = ctx.request.query;
     let res = [];
