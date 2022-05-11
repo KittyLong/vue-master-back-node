@@ -8,8 +8,8 @@ class MenuController {
 			_.pick(item, [
 				'menu_id',
 				'menu_name',
+				'name',
 				'path',
-				'vue_path',
 				'parent_id',
 				'icon',
 			])
